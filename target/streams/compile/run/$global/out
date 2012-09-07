@@ -1,12 +1,13 @@
-[0m[[0minfo[0m] [0mRunning MusicMover /Volumes/home_server/Music/Bayside/Bayside[0m
+[0m[[0minfo[0m] [0mRunning main.scala.com.creasetoph.MusicMover asdf[0m
 [0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
 [0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
 [0m[[0mdebug[0m] [0m  Classpath:[0m
-[0m[[0mdebug[0m] [0m	/Volumes/home_server/scripts/music_mover/target/scala-2.9.1/classes[0m
-[0m[[0mdebug[0m] [0m	/Volumes/home_server/scripts/music_mover/lib/jaudiotagger-2.0.2.jar[0m
-[0m[[0mdebug[0m] [0m	/Volumes/home_server/scripts/music_mover/lib/jaudiotagger-2.0.2-javadoc.jar[0m
-[0m[[0mdebug[0m] [0m	/Volumes/home_server/scripts/music_mover/lib/jaudiotagger-2.0.2-sources.jar[0m
-[0m[[0mdebug[0m] [0m	/Users/creasetoph/.sbt/boot/scala-2.9.1/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	/media/data/scripts/music_mover/target/scala-2.9.2/classes[0m
+[0m[[0mdebug[0m] [0m	/media/data/scripts/music_mover/lib/jaudiotagger-2.0.2.jar[0m
+[0m[[0mdebug[0m] [0m	/media/data/scripts/music_mover/lib/jaudiotagger-2.0.2-javadoc.jar[0m
+[0m[[0mdebug[0m] [0m	/media/data/scripts/music_mover/lib/scopt_2.9.2-2.1.0.jar[0m
+[0m[[0mdebug[0m] [0m	/media/data/scripts/music_mover/lib/jaudiotagger-2.0.2-sources.jar[0m
+[0m[[0mdebug[0m] [0m	/home/creasetoph/.sbt/boot/scala-2.9.2/lib/scala-library.jar[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
 [0m[[0mdebug[0m] [0m	Thread run-main exited.[0m
 [0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m

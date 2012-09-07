@@ -4,3 +4,44 @@ run /Volumes/home_server/Music/Bayside/Bayside
 rebuild
 help
 reload
+run
+reload
+help
+settings
+reload
+help
+reload
+help
+gen-idea
+run
+run asdf
+run
+run /asdf
+run /Vol/Volumes/home_server/Music/Bayside/Bayside
+run /Volumes/home_server/Music/Bayside/Bayside
+run -d /Volumes/home_server/Music/Bayside/Bayside
+run -p /Volumes/home_server/Music/Bayside/Bayside
+run -p true /Volumes/home_server/Music/Bayside/Bayside
+run -p  /Volumes/home_server/Music/Bayside/Bayside
+run -p "" /Volumes/home_server/Music/Bayside/Bayside
+run -p true /Volumes/home_server/Music/Bayside/Bayside
+run -d true /Volumes/home_server/Music/Bayside/Bayside
+run -p true /Volumes/home_server/Music/Bayside/Bayside
+run -p t /Volumes/home_server/Music/Bayside/Bayside
+run -p /Volumes/home_server/Music/Bayside/Bayside
+run  /Volumes/home_server/Music/Bayside/Bayside
+run -p  /Volumes/home_server/Music/Bayside/Bayside
+run
+run /a
+run /aasfd
+run -p /as
+run 
+run asdf
+m
+run asdf
+m
+run asdf
+m
+run asdf
+run
+run asdf
