@@ -2,17 +2,13 @@ package main.scala.com.creasetoph
 
 import java.io.File
 import java.util.logging.{Logger, Level}
-import objects.EntityBuilder
-import org.jaudiotagger.audio.AudioFileIO
-import org.jaudiotagger.audio.mp3.MP3File
-import org.jaudiotagger.tag.id3.ID3v24Frames
+import objects.{NewEntityBuilder}
 import scopt.immutable.OptionParser
-import scala.collection.JavaConversions._
 
 object MusicMover {
 
 //  val path = "/Volumes/home_server/Music/"
-  val path = "/Volumes/home_server/scripts/music_mover/mp3s/"
+  val path = "/Users/creasetoph/MusicTest/Spoon/"
 
   def main(args: Array[String]) {
     Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF)
@@ -32,99 +28,13 @@ object MusicMover {
         val file = new File(config.filename)
         file.exists() match {
           case true => {
-            EntityBuilder.build(file)
+            NewEntityBuilder.build(file)
             if (config.print) {
 
             }
           }
           case false => println("File: " + config.filename + " does not exists")
         }
-    }
-  }
-
-  def processAlbumDir(file: File, f: (File) => Unit) {
-    file.isDirectory match {
-      case false => println("File: " + file.getName + " is not a directory")
-      case true => {
-        val tracks = file.listFiles.filter(_.getName.matches( """.*\.mp3"""))
-        tracks.size match {
-          case 0 => println("Directory: " + file.getName + " has no mp3's in it")
-          case _ => {
-            tracks.foreach(f)
-          }
-        }
-      }
-    }
-  }
-
-  def printAlbumDir(file: File) {
-    file.isDirectory match {
-      case false => println("File: " + file.getName + " is not a directory")
-      case true => {
-        val tracks = file.listFiles.filter(_.getName.matches( """.*\.mp3"""))
-        tracks.size match {
-          case 0 => println("Directory: " + file.getName + " has no mp3's in it")
-          case _ => {
-            var artist = ""
-            var album = ""
-            var year = ""
-            var trackss: List[String] = List()
-            tracks.foreach(file => {
-              val tag = getID3v2Tag(file)
-              var tmp = tag.getFirst(ID3v24Frames.FRAME_ID_ARTIST)
-              if (tmp != "" && artist != tmp) {
-                artist = tmp
-              }
-              tmp = tag.getFirst(ID3v24Frames.FRAME_ID_ALBUM)
-              if (tmp != "" && album != tmp) {
-                album = tmp
-              }
-              tmp = tag.getFirst(ID3v24Frames.FRAME_ID_YEAR)
-              if (tmp != "" && year != tmp) {
-                year = tmp
-              }
-              trackss ::= "  [" + tag.getFirst(ID3v24Frames.FRAME_ID_TRACK) + "] - " + tag.getFirst(ID3v24Frames.FRAME_ID_TITLE)
-
-            })
-            println("size:  " + trackss.size)
-            val ts = trackss.mkString("\n")
-            val out = "Dir: " + file.getAbsolutePath + "\n" +
-              "Entities: " + artist + "\n" +
-              "Album : " + album + "\n" +
-              "Year  : " + year + "\n" +
-              "Tracks:\n" + ts + "\n"
-            println(out)
-          }
-        }
-      }
-    }
-  }
-
-  def getID3v2Tag(file: File) = {
-    AudioFileIO.read(file).asInstanceOf[MP3File] match {
-      case mp3File: MP3File => mp3File.hasID3v2Tag match {
-        case true => {
-          mp3File.getID3v2TagAsv24
-        }
-      }
-    }
-  }
-
-  def stringifyID3v2(file: File) {
-    AudioFileIO.read(file).asInstanceOf[MP3File] match {
-      case mp3File: MP3File => mp3File.hasID3v2Tag match {
-        case true => {
-          val tag = mp3File.getID3v2TagAsv24
-          println(file.getName + ": \n" +
-            "    Aritist: " + tag.getFirst(ID3v24Frames.FRAME_ID_ARTIST) + "\n" +
-            "      Album: " + tag.getFirst(ID3v24Frames.FRAME_ID_ALBUM) + "\n" +
-            "      Title: " + tag.getFirst(ID3v24Frames.FRAME_ID_TITLE) + "\n" +
-            "       Year: " + tag.getFirst(ID3v24Frames.FRAME_ID_YEAR) + "\n" +
-            "  Track Num: " + tag.getFirst(ID3v24Frames.FRAME_ID_TRACK) + "\n" +
-            "\n"
-          )
-        }
-      }
     }
   }
 }
