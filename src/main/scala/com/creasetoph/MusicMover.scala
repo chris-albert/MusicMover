@@ -2,16 +2,17 @@ package main.scala.com.creasetoph
 
 import java.io.File
 import java.util.logging.{Logger, Level}
+import objects.EntityBuilder
 import org.jaudiotagger.audio.AudioFileIO
 import org.jaudiotagger.audio.mp3.MP3File
 import org.jaudiotagger.tag.id3.ID3v24Frames
-import scala.com.creasetoph.Config
 import scopt.immutable.OptionParser
 import scala.collection.JavaConversions._
-import main.scala.com.creasetoph.Config
-import main.scala.com.creasetoph.Config
 
 object MusicMover {
+
+//  val path = "/Volumes/home_server/Music/"
+  val path = "/Volumes/home_server/scripts/music_mover/mp3s/"
 
   def main(args: Array[String]) {
     Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF)
@@ -22,7 +23,7 @@ object MusicMover {
           (c: Config) => c.copy(print = true)
         },
         arg("<filename>", "<filename> is the filename") {
-          (v: String, c: Config) => c.copy(filename = v)
+          (v: String, c: Config) => c.copy(filename = path)
         }
       )
     }
@@ -31,9 +32,9 @@ object MusicMover {
         val file = new File(config.filename)
         file.exists() match {
           case true => {
+            EntityBuilder.build(file)
             if (config.print) {
-              //            processAlbumDir(file,stringifyID3v2)
-              printAlbumDir(file)
+
             }
           }
           case false => println("File: " + config.filename + " does not exists")
@@ -88,7 +89,7 @@ object MusicMover {
             println("size:  " + trackss.size)
             val ts = trackss.mkString("\n")
             val out = "Dir: " + file.getAbsolutePath + "\n" +
-              "Artist: " + artist + "\n" +
+              "Entities: " + artist + "\n" +
               "Album : " + album + "\n" +
               "Year  : " + year + "\n" +
               "Tracks:\n" + ts + "\n"
