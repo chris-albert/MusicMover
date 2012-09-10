@@ -2,13 +2,13 @@ package main.scala.com.creasetoph
 
 import java.io.File
 import java.util.logging.{Logger, Level}
-import objects.{NewEntityBuilder}
+import objects.NewEntityBuilder
 import scopt.immutable.OptionParser
 
 object MusicMover {
 
 //  val path = "/Volumes/home_server/Music/"
-  val path = "/Users/creasetoph/MusicTest/Spoon/"
+  val path = "/Volumes/home_server/scripts/music_mover/mp3s/"
 
   def main(args: Array[String]) {
     Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF)
@@ -28,7 +28,7 @@ object MusicMover {
         val file = new File(config.filename)
         file.exists() match {
           case true => {
-            NewEntityBuilder.build(file)
+            NewEntityBuilder.newBuild(file)
             if (config.print) {
 
             }
